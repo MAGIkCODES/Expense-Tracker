@@ -6,12 +6,32 @@
         </div>
         <div>
           <h4>Expense</h4>
-          <p id="money-minus" class="money minus">${{ expenses }}</p>
+          <p class="money minus">${{ expenses }}</p>
         </div>
     </div>
 </template>
 
+
+<!-- //NEW WAY TO IMPORT PROPS  -->
 <script setup>
+const {income, expenses} = defineProps({
+  income: {
+    type: Number,
+    required: true,
+  },
+
+  expenses: {
+    type: Number,
+    required: true,
+  }
+})
+</script>
+
+
+
+<!-- //OLD WAY TO IMPORT PROPS  -->
+
+<!-- <script setup>
 import { defineProps } from 'vue';
 
 const props = defineProps({
@@ -25,4 +45,4 @@ const props = defineProps({
     required: true,
   }
 })
-</script>
+</script> -->

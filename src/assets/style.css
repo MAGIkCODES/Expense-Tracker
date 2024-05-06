@@ -100,6 +100,13 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  font-weight: 600;
+}
+.btn:hover {
+  color:#5c4cad;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid #9c88ff;
 }
 
 .btn:focus,
