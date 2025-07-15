@@ -1,29 +1,39 @@
-# vue-expexse-tracker
+# 💸 Vue Expense Tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple and interactive **Expense Tracker** app built with **Vue.js 3**, designed to help users track income and expenses in real-time. This project is perfect for beginners looking to understand the basics of Vue components, reactive state, and dynamic UI rendering.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🚀 Features
 
-## Customize configuration
+- ➕ Add income and expenses
+- ➖ Remove transactions
+- 📊 Real-time balance updates
+- 📃 Transaction history list
+- 🧮 Automatic total calculations
+- 🧠 Clean and reactive state management using the Composition API or Options API
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+---
 
-## Project Setup
+## 🛠 Tech Stack
 
-```sh
+- [Vue.js 3](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/) *(optional)*
+- [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) *(optional for data persistence)*
+- [Vite](https://vitejs.dev/) or Vue CLI for development server
+
+---
+
+## 📦 Project Setup
+
+### Prerequisites
+
+- Node.js >= 14.x
+- npm or yarn
+
+### Install Dependencies
+
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+# or
+yarn install
