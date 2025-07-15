@@ -6,8 +6,12 @@
       <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted" />
       <AddTransaction @transactionSubmitted="handleTransactionSubmitted"/>
     </div>
+<<<<<<< HEAD
   <head />
   
+=======
+  <Header />
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
 </template>
 
 <script setup>
@@ -26,15 +30,24 @@
  
   
 
+<<<<<<< HEAD
 // Get total
+=======
+  // Get total
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
   const total = computed(() => {
     return transactions.value.reduce((account, transaction) => {
       return account + transaction.amount
     }, 0);
   }); 
 
+<<<<<<< HEAD
 // Get income
 const income = computed(() => {
+=======
+  // Get income
+  const income = computed(() => {
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
     return transactions.value
     .filter((transaction) => transaction.amount > 0)
     .reduce((acc, transaction) => {
@@ -43,8 +56,13 @@ const income = computed(() => {
     .toFixed(2);
   }); 
 
+<<<<<<< HEAD
 // Get expenses
 const expenses = computed(() => {
+=======
+  // Get expenses
+  const expenses = computed(() => {
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
     return transactions.value
     .filter((transaction) => transaction.amount < 0)
     .reduce((acc, transaction) => {
@@ -54,6 +72,7 @@ const expenses = computed(() => {
   }); 
 
   // Add transaction
+<<<<<<< HEAD
 const handleTransactionSubmitted = (transactionData) => {
   transactions.value.push({
     id: generateUniqueId(),
@@ -70,6 +89,24 @@ const handleTransactionSubmitted = (transactionData) => {
 const generateUniqueId = () => {
   return Math.floor(Math.random() * 1000000);
 }
+=======
+  const handleTransactionSubmitted = (transactionData) => {
+    transactions.value.push({
+      id: generateUniqueId(),
+      text: transactionData.text,
+      amount: transactionData.amount
+    });
+
+    savedTransactionsToLocalStorage();
+
+    toast.success('Transaction added');
+  }
+
+  // generate a Unique ID
+  const generateUniqueId = () => {
+    return Math.floor(Math.random() * 1000000);
+  }
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
 
   // Delete Transaction
   const handleTransactionDeleted = (id) => {
@@ -83,12 +120,21 @@ const generateUniqueId = () => {
 
 
   // Save to localStorage
+<<<<<<< HEAD
 const savedTransactionsToLocalStorage = () => {
   localStorage.setItem('transactions', JSON.stringify(transactions.value));
 }
 
 // Get item saved to localstorage
 onMounted(() => {
+=======
+  const savedTransactionsToLocalStorage = () => {
+    localStorage.setItem('transactions', JSON.stringify(transactions.value));
+  }
+
+  // Get item saved to localstorage
+  onMounted(() => {
+>>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
     const savedTransactions = JSON.parse(localStorage.getItem
     ('transactions'));
 
