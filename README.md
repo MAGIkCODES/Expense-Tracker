@@ -4,8 +4,6 @@ A simple and interactive **Expense Tracker** app built with **Vue.js 3**, design
 
 ---
 
-# live link : https://expense-tracker-khaki-gamma.vercel.app/
-
 ## 🚀 Features
 
 - ➕ Add income and expenses

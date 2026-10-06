@@ -1,78 +1,52 @@
 <template>
   <Header />
-    <div class="container">
-      <Balance :total="total" />
-      <IncomeExpenses :income="+income" :expenses="+expenses"/>
-      <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted" />
-      <AddTransaction @transactionSubmitted="handleTransactionSubmitted"/>
-    </div>
-<<<<<<< HEAD
-  <head />
-  
-=======
-  <Header />
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
+  <div class="container">
+    <Balance :total="total" />
+    <IncomeExpenses :income="+income" :expenses="+expenses" />
+    <TransactionList
+      :transactions="transactions"
+      @transactionDeleted="handleTransactionDeleted"
+    />
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
+  </div>
 </template>
 
 <script setup>
-  import Header from './components/Header.vue';
-  import Balance from './components/Balance.vue';
-  import IncomeExpenses from './components/IncomeExpenses.vue';
-  import TransactionList from './components/TransactionList.vue';
-  import AddTransaction from './components/AddTransaction.vue';
+import { computed, onMounted, ref } from 'vue';
+import { useToast } from 'vue-toastification';
+import AddTransaction from './components/AddTransaction.vue';
+import Balance from './components/Balance.vue';
+import Header from './components/Header.vue';
+import IncomeExpenses from './components/IncomeExpenses.vue';
+import TransactionList from './components/TransactionList.vue';
 
-  import { ref, computed, onMounted } from 'vue';
-  import { useToast } from 'vue-toastification'
+const transactions = ref([]);
+const toast = useToast();
 
-  const transactions = ref([]);
-  const toast = useToast();
-  
- 
-  
+const total = computed(() => {
+  return transactions.value.reduce((account, transaction) => {
+    return account + transaction.amount;
+  }, 0);
+});
 
-<<<<<<< HEAD
-// Get total
-=======
-  // Get total
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
-  const total = computed(() => {
-    return transactions.value.reduce((account, transaction) => {
-      return account + transaction.amount
-    }, 0);
-  }); 
-
-<<<<<<< HEAD
-// Get income
 const income = computed(() => {
-=======
-  // Get income
-  const income = computed(() => {
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
-    return transactions.value
+  return transactions.value
     .filter((transaction) => transaction.amount > 0)
     .reduce((acc, transaction) => {
       return acc + transaction.amount;
     }, 0)
     .toFixed(2);
-  }); 
+});
 
-<<<<<<< HEAD
-// Get expenses
 const expenses = computed(() => {
-=======
-  // Get expenses
-  const expenses = computed(() => {
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
-    return transactions.value
+  return transactions.value
     .filter((transaction) => transaction.amount < 0)
     .reduce((acc, transaction) => {
       return acc + transaction.amount;
     }, 0)
     .toFixed(2);
-  }); 
+});
 
-  // Add transaction
-<<<<<<< HEAD
 const handleTransactionSubmitted = (transactionData) => {
   transactions.value.push({
     id: generateUniqueId(),
@@ -81,89 +55,31 @@ const handleTransactionSubmitted = (transactionData) => {
   });
 
   savedTransactionsToLocalStorage();
+  toast.success('Transaction added');
+};
 
-  toast.success('Transaction add');
-}
-
-// generate a Unique I
 const generateUniqueId = () => {
   return Math.floor(Math.random() * 1000000);
-}
-=======
-  const handleTransactionSubmitted = (transactionData) => {
-    transactions.value.push({
-      id: generateUniqueId(),
-      text: transactionData.text,
-      amount: transactionData.amount
-    });
+};
 
-    savedTransactionsToLocalStorage();
+const handleTransactionDeleted = (id) => {
+  transactions.value = transactions.value.filter(
+    (transaction) => transaction.id !== id
+  );
 
-    toast.success('Transaction added');
-  }
+  savedTransactionsToLocalStorage();
+  toast.success('Transaction deleted');
+};
 
-  // generate a Unique ID
-  const generateUniqueId = () => {
-    return Math.floor(Math.random() * 1000000);
-  }
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
-
-  // Delete Transaction
-  const handleTransactionDeleted = (id) => {
-    transactions.value = transactions.value.filter
-    ((transaction) => transaction.id !== id );
-
-    savedTransactionsToLocalStorage();
-
-    toast.success('Transaction deleted');
-  }
-
-
-  // Save to localStorage
-<<<<<<< HEAD
 const savedTransactionsToLocalStorage = () => {
   localStorage.setItem('transactions', JSON.stringify(transactions.value));
-}
-
-// Get item saved to localstorage
-onMounted(() => {
-=======
-  const savedTransactionsToLocalStorage = () => {
-    localStorage.setItem('transactions', JSON.stringify(transactions.value));
-  }
-
-  // Get item saved to localstorage
-  onMounted(() => {
->>>>>>> ca137cd (Fix: added Expense-Tracker as a regular folder)
-    const savedTransactions = JSON.parse(localStorage.getItem
-    ('transactions'));
-
-    if (savedTransactions) {
-      transactions.value = savedTransactions;
-    }
-  });
-</script>
-
-
-
-
-
-  <!-- Option API -->
-<!-- <script>
-  import Header from './components/Header.vue';
-  import Balance from './components/Balance.vue'
-  import IncomeExpenses from './components/IncomeExpenses.vue'
-  import TransactionList from './components/TransactionList.vue'
-  import AddTransaction from './components/AddTransaction.vue'
-
-  export default {
-    components: {
-      Header,
-      Balance,
-      IncomeExpenses,
-      TransactionList,
-      AddTransaction
-
-  }
 };
-</script> -->
+
+onMounted(() => {
+  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+
+  if (savedTransactions) {
+    transactions.value = savedTransactions;
+  }
+});
+</script>
