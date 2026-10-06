@@ -1,6 +1,6 @@
 # 💸 Vue Expense Tracker
 
-A simple and interactive **Expense Tracker** app built with **Vue.js 3**, designed to help users track income and expenses in real-time. This project is perfect for beginners looking to understand the basics of Vue components, reactive state, and dynamic UI rendering.
+A simple and interactive **Expense Tracker** app built with **Vue.js 3**, designed to help users track income and expenses in real-time. This project is perfect for beginners looking to understand [...] 
 
 ---
 
@@ -11,7 +11,13 @@ A simple and interactive **Expense Tracker** app built with **Vue.js 3**, design
 - 📊 Real-time balance updates
 - 📃 Transaction history list
 - 🧮 Automatic total calculations
-- 🧠 Clean and reactive state management using the Composition API or Options API
+- 🧠 Clean and reactive state management using the Composition API
+
+---
+
+## 🌐 Live Demo
+
+https://expense-tracker-murex-chi-23.vercel.app/
 
 ---
 
